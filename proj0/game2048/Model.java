@@ -94,6 +94,51 @@ public class Model extends Observable {
         setChanged();
     }
 
+    /** my original helping function to deal with a single column */
+    public boolean dealCol(int col){
+        boolean changed=false;
+        boolean haveMerged=false;
+        for(int i=2;i>=0;i--){ // move from top to bottom, start from the second row
+            Tile next=board.tile(col,i+1);
+            Tile now=board.tile(col,i);
+            if(now==null) continue;
+            if(next!=null&&next.value()!=now.value()) continue;
+//            if(next!=null&&next.value()==now.value()&&haveMerged=true)
+            int firstnum=-1;
+            for(int j=i+1;j<4;j++){
+                if(board.tile(col,j)!=null){
+                    firstnum=j;
+                    break;
+                }
+            }
+            if(firstnum==-1){
+                board.move(col,3,now);
+                changed=true;
+            }
+            else{
+                if(board.tile(col,firstnum).value()!=now.value()){
+                    haveMerged=false;
+                    board.move(col,firstnum-1,now);
+                    changed=true;
+                }
+                else if(haveMerged==false){
+                    haveMerged=true;
+                    score+=2*now.value();
+                    board.move(col,firstnum,now);
+                    changed=true;
+                }
+                else{
+                    haveMerged=false;
+                    if(firstnum-1==i) continue;
+                    board.move(col,firstnum-1,now);
+                    changed=true;
+                }
+            }
+        }
+        return changed;
+    }
+
+
     /** Tilt the board toward SIDE. Return true iff this changes the board.
      *
      * 1. If two Tile objects are adjacent in the direction of motion and have
@@ -114,6 +159,12 @@ public class Model extends Observable {
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
 
+        //my function:
+        board.setViewingPerspective(side);
+        for(int i=0;i<4;i++){
+            if(dealCol(i)==true) changed=true;
+        }
+        board.setViewingPerspective(Side.NORTH);
         checkGameOver();
         if (changed) {
             setChanged();
@@ -138,6 +189,13 @@ public class Model extends Observable {
      * */
     public static boolean emptySpaceExists(Board b) {
         // TODO: Fill in this function.
+        // my function:
+        int n=b.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(b.tile(i,j)==null) return true;
+            }
+        }
         return false;
     }
 
@@ -148,6 +206,27 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        // my function:
+        int n=b.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(b.tile(i,j)==null) continue;
+                if(b.tile(i,j).value()==MAX_PIECE) return true;
+            }
+        }
+        return false;
+    }
+
+    /** my original helping function to search for neighbors */
+    public static boolean searchNeighbors(int i,int j,Board b){
+        int n=b.size();
+        int[] dx=new int[]{-1,0,1,0};
+        int[] dy=new int[]{0,-1,0,1};
+        for(int k=0;k<4;k++){
+            if(i+dx[k]<0||j+dy[k]<0||i+dx[k]>=n||j+dy[k]>=n) continue;
+            if(b.tile(i+dx[k],j+dy[k])==null) continue;
+            if(b.tile(i+dx[k],j+dy[k]).value()==b.tile(i,j).value()) return true;
+        }
         return false;
     }
 
@@ -157,8 +236,18 @@ public class Model extends Observable {
      * 1. There is at least one empty space on the board.
      * 2. There are two adjacent tiles with the same value.
      */
+
+
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        // my function:
+        int n=b.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(b.tile(i,j)==null) return true;
+                if(searchNeighbors(i,j,b)) return true;
+            }
+        }
         return false;
     }
 
