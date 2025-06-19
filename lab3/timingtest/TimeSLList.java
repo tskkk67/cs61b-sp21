@@ -19,10 +19,26 @@ public class TimeSLList {
 
     public static void main(String[] args) {
         timeGetLast();
+        printTimingTable(sNs,stimes,sopCounts);
     }
 
+    static AList<Integer> sNs=new AList<>();
+    static AList<Double> stimes=new AList<>();
+    static AList<Integer> sopCounts=new AList<>();
+    static int addtimes=1000;
+    static final int ops=10000;
     public static void timeGetLast() {
         // TODO: YOUR CODE HERE
+        for(int i=0;i<8;i++){
+            SLList<Integer> temp=new SLList<>();
+            sNs.addLast(addtimes);
+            for(int j=1;j<=addtimes;j++) temp.addLast(j);
+            Stopwatch sw = new Stopwatch();
+            for(int j=1;j<=ops;j++) temp.getLast();
+            stimes.addLast(sw.elapsedTime());
+            sopCounts.addLast(ops);
+            addtimes*=2;
+        }
     }
 
 }

@@ -19,9 +19,24 @@ public class TimeAList {
 
     public static void main(String[] args) {
         timeAListConstruction();
+        printTimingTable(sNs,stimes,sopCounts);
     }
+
+    static AList<Integer> sNs=new AList<>();
+    static AList<Double> stimes=new AList<>();
+    static AList<Integer> sopCounts=new AList<>();
+    static int addtimes=1000;
 
     public static void timeAListConstruction() {
         // TODO: YOUR CODE HERE
+        for(int i=0;i<8;i++){
+            AList<Integer> temp=new AList<>();
+            Stopwatch sw = new Stopwatch();
+            for(int j=1;j<=addtimes;j++) temp.addLast(j);
+            stimes.addLast(sw.elapsedTime());
+            sNs.addLast(addtimes);
+            sopCounts.addLast(addtimes);
+            addtimes*=2;
+        }
     }
 }
