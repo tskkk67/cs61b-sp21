@@ -5,7 +5,7 @@ public class ArrayList<Item> {
     private int size;
 
     public ArrayList() {
-        items = (Item[]) new Object[100];
+        items = (Item[]) new Object[8];
         size = 0;
     }
 
@@ -24,6 +24,7 @@ public class ArrayList<Item> {
         Item[] temp = (Item[]) new Object[items.length];
         temp[0] = x;
         System.arraycopy(items, 0, temp, 1, size);
+        items = temp;
         size++;
     }
 
@@ -45,6 +46,10 @@ public class ArrayList<Item> {
         Item[] temp = (Item[]) new Object[items.length];
         System.arraycopy(items, 1, temp, 0, size - 1);
         items = temp;
+        size--;
+        if (size < items.length/4 && items.length > 4) {
+            resize(items.length/4);
+        }
         return x;
     }
 
@@ -55,6 +60,9 @@ public class ArrayList<Item> {
         }
         Item x = items[size-1];
         size--;
+        if (size < items.length/4 && items.length > 4) {
+            resize(items.length/4);
+        }
         return x;
     }
 
