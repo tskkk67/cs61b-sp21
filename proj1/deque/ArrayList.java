@@ -9,12 +9,6 @@ public class ArrayList<Item> {
         size = 0;
     }
 
-    public ArrayList(Item x) {
-        items = (Item[]) new Object[100];
-        items[0] = x;
-        size = 1;
-    }
-
     /** Resize the array with capacity x. */
     private void resize(int x) {
         Item[] temp = (Item[]) new Object[x];

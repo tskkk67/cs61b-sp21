@@ -3,11 +3,8 @@ package deque;
 public class LinkedListDeque<Item> {
     private LinkedList<Item> deque;
 
-    LinkedListDeque() {
+    public LinkedListDeque() {
         deque = new LinkedList<>();
-    }
-    LinkedListDeque(Item x) {
-        deque = new LinkedList<>(x);
     }
 
     /** Add item to the front. */

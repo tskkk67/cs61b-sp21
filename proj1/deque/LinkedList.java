@@ -25,14 +25,6 @@ public class LinkedList<Item> {
         sentinel.lst = sentinel;
     }
 
-    public LinkedList(Item x) {
-        size = 1;
-        Node first = new Node(x, null, null);
-        sentinel = new Node(null, first, first);
-        first.lst = sentinel;
-        first.nxt = sentinel;
-    }
-
     /** Add a node to the front. */
     public void addFirst(Item x) {
         size++;

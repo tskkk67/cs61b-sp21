@@ -3,11 +3,8 @@ package deque;
 public class ArrayDeque<Item> {
     private ArrayList<Item> deque;
 
-    ArrayDeque() {
+    public ArrayDeque() {
         deque = new ArrayList<>();
-    }
-    ArrayDeque(Item x) {
-        deque = new ArrayList<>(x);
     }
 
     /** Add item to the front. */
