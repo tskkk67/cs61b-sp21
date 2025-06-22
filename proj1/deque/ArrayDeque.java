@@ -3,10 +3,10 @@ package deque;
 public class ArrayDeque<Item> {
     private ArrayList<Item> deque;
 
-    ArrayDeque() {
-        deque = new ArrayList<>();
+    public ArrayDeque() {
+        deque = new ArrayList<Item>();
     }
-    ArrayDeque(Item x) {
+    public ArrayDeque(Item x) {
         deque = new ArrayList<>(x);
     }
 
