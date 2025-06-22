@@ -4,7 +4,7 @@ public class ArrayDeque<Item> {
     private ArrayList<Item> deque;
 
     public ArrayDeque() {
-        deque = new ArrayList<Item>();
+        deque = new ArrayList<>();
     }
     public ArrayDeque(Item x) {
         deque = new ArrayList<>(x);

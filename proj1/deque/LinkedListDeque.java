@@ -7,7 +7,7 @@ public class LinkedListDeque<Item> {
         deque = new LinkedList<>();
     }
     public LinkedListDeque(Item x) {
-        deque = new LinkedList<Item>(x);
+        deque = new LinkedList<>(x);
     }
 
     /** Add item to the front. */
