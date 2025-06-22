@@ -20,7 +20,7 @@ public class ArrayDeque<Item> {
     /** Judge whether the deque is empty.
      * Return true if empty. */
     public boolean isEmpty() {
-        if(deque.getSize() == 0) {
+        if (deque.getSize() == 0) {
             return true;
         }
         return false;
