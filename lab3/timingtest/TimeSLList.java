@@ -19,16 +19,16 @@ public class TimeSLList {
 
     public static void main(String[] args) {
         timeGetLast();
-        printTimingTable(sNs,stimes,sopCounts);
     }
 
-    static AList<Integer> sNs=new AList<>();
-    static AList<Double> stimes=new AList<>();
-    static AList<Integer> sopCounts=new AList<>();
-    static int addtimes=1000;
-    static final int ops=10000;
     public static void timeGetLast() {
         // TODO: YOUR CODE HERE
+        AList<Integer> sNs=new AList<>();
+        AList<Double> stimes=new AList<>();
+        AList<Integer> sopCounts=new AList<>();
+        int addtimes=1000;
+        final int ops=10000;
+
         for(int i=0;i<8;i++){
             SLList<Integer> temp=new SLList<>();
             sNs.addLast(addtimes);
@@ -39,6 +39,8 @@ public class TimeSLList {
             sopCounts.addLast(ops);
             addtimes*=2;
         }
+
+        printTimingTable(sNs,stimes,sopCounts);
     }
 
 }
