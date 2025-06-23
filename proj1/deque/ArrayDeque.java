@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<Item> implements Deque<Item> {
+public class ArrayDeque<Item> implements Deque<Item>, Iterable<Item> {
     private ArrayList<Item> deque;
 
     public ArrayDeque() {
@@ -76,6 +76,6 @@ public class ArrayDeque<Item> implements Deque<Item> {
     public Iterator<Item> iterator() {
         return new ArrayDequeIterator();
     }
-    
+
 
 }

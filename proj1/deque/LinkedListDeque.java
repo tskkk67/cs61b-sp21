@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<Item> implements Deque<Item> {
+public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
     private LinkedList<Item> deque;
 
     public LinkedListDeque() {
@@ -53,7 +53,7 @@ public class LinkedListDeque<Item> implements Deque<Item> {
 
     /** Get the i-th (0-base) item, but recursively.
      * But I will use iteration... See linkedlist for detail. */
-    public Item getRecurseive(int i) {
+    public Item getRecursive(int i) {
         return deque.getRecursive(i);
     }
 
