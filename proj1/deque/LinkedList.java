@@ -11,6 +11,14 @@ public class LinkedList<Item> {
             nxt = n;
             lst = l;
         }
+
+        /** Wow! We can have recursive method by getting the (this+i)-th node recursively! */
+        public Node get(int i) {
+            if (i == 0) {
+                return this;
+            }
+            return this.nxt.get(i-1);
+        }
     }
 
     /** Sentinel node to avoid null pointer.
@@ -79,16 +87,14 @@ public class LinkedList<Item> {
 
     /** Get the i-th (0-base) value, but recursively.
      * That's too bad. Can I use recursive method given that my next is a node, not a list?
-     * I will temporarily use iteration. */
+     * I may temporarily use iteration first...
+     * BREAKING news after 60 mins: your next is a node? Then use recursive mothod on your NODE!
+     * What a genius XD */
     public Item getRecursive(int i) {
         if (i >= size) {
             return null;
         }
-        Node p = sentinel;
-        for (int k = 0; k <= i; k++) {
-            p = p.nxt;
-        }
-        return p.value;
+        return sentinel.nxt.get(i).value;
     }
 
     /** Get the size of a list. */

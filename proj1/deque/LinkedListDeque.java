@@ -52,7 +52,8 @@ public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
     }
 
     /** Get the i-th (0-base) item, but recursively.
-     * But I will use iteration... See linkedlist for detail. */
+     * But I will use iteration... See linkedlist for detail.
+     * Big news: no more iteration! Still, see linkedlist for detail. */
     public Item getRecursive(int i) {
         return deque.getRecursive(i);
     }
@@ -82,5 +83,17 @@ public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
     public Iterator<Item> iterator() {
         return new LinkedlistIterator();
     }
+
+
+//    public static void main(String[] args){
+//        LinkedListDeque<Integer> test = new LinkedListDeque<>();
+//        test.addFirst(1);
+//        test.addLast(6);
+//        test.addFirst(3);
+//        test.addFirst(100);
+//        System.out.println(test.getRecursive(1));
+//        System.out.println(test.getRecursive(2));
+//    }
+
 
 }
