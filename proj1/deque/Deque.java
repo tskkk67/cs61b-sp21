@@ -2,11 +2,11 @@ package deque;
 
 import java.util.Iterator;
 
-public interface Deque<T> extends Iterable<T> {
+public interface Deque<Item> extends Iterable<Item> {
 
-    public void addFirst(T item);
+    public void addFirst(Item item);
 
-    public void addLast(T item);
+    public void addLast(Item item);
 
     /** Judge whether the deque is empty.
      * Return true if empty. */
@@ -21,12 +21,13 @@ public interface Deque<T> extends Iterable<T> {
 
     public void printDeque();
 
-    public T removeFirst();
+    public Item removeFirst();
 
-    public T removeLast();
+    public Item removeLast();
 
-    public T get(int index);
+    public Item get(int index);
 
-    public Iterator<T> iterator();
+    @Override
+    public Iterator<Item> iterator();
 
 }

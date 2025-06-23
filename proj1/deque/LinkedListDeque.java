@@ -51,6 +51,12 @@ public class LinkedListDeque<Item> implements Deque<Item> {
         return deque.get(i);
     }
 
+    /** Get the i-th (0-base) item, but recursively.
+     * But I will use iteration... See linkedlist for detail. */
+    public Item getRecurseive(int i) {
+        return deque.getRecursive(i);
+    }
+
     /** private class to implement linkedlistdeque iterator. */
     private class LinkedlistIterator implements Iterator<Item> {
         private int pos;

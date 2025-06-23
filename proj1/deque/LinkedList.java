@@ -77,6 +77,20 @@ public class LinkedList<Item> {
         return p.value;
     }
 
+    /** Get the i-th (0-base) value, but recursively.
+     * That's too bad. Can I use recursive method given that my next is a node, not a list?
+     * I will temporarily use iteration. */
+    public Item getRecursive(int i) {
+        if (i >= size) {
+            return null;
+        }
+        Node p = sentinel;
+        for (int k = 0; k <= i; k++) {
+            p = p.nxt;
+        }
+        return p.value;
+    }
+
     /** Get the size of a list. */
     public int getSize() {
         return size;

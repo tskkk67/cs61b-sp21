@@ -1,7 +1,5 @@
 package deque;
 
-import jdk.jfr.BooleanFlag;
-
 import java.util.Iterator;
 
 public class ArrayDeque<Item> implements Deque<Item> {
@@ -78,5 +76,6 @@ public class ArrayDeque<Item> implements Deque<Item> {
     public Iterator<Item> iterator() {
         return new ArrayDequeIterator();
     }
+    
 
 }
