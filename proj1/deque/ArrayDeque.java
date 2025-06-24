@@ -2,8 +2,8 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<Item> implements Deque<Item>, Iterable<Item> {
-    private ArrayList<Item> deque;
+public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
+    private ArrayList<T> deque;
 
     public ArrayDeque() {
         deque = new ArrayList<>();
@@ -11,13 +11,13 @@ public class ArrayDeque<Item> implements Deque<Item>, Iterable<Item> {
 
     /** Add item to the front. */
     @Override
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
         deque.addFirst(x);
     }
 
     /** Add item to the bottom. */
     @Override
-    public void addLast(Item x) {
+    public void addLast(T x) {
         deque.addLast(x);
     }
 
@@ -35,24 +35,24 @@ public class ArrayDeque<Item> implements Deque<Item>, Iterable<Item> {
 
     /** Remove the first item and return its value. */
     @Override
-    public Item removeFirst() {
+    public T removeFirst() {
         return deque.removeFirst();
     }
 
     /** Remove the last item and return its value. */
     @Override
-    public Item removeLast() {
+    public T removeLast() {
         return deque.removeLast();
     }
 
     /** Get the i-th (0-base) item of deque. */
     @Override
-    public Item get(int i) {
+    public T get(int i) {
         return deque.get(i);
     }
 
     /** private class to implement arraydeque iterator. */
-    private class ArrayDequeIterator implements Iterator<Item> {
+    private class ArrayDequeIterator implements Iterator<T> {
         private int pos;
         public ArrayDequeIterator() {
             pos = 0;
@@ -64,8 +64,8 @@ public class ArrayDeque<Item> implements Deque<Item>, Iterable<Item> {
         }
 
         @Override
-        public Item next() {
-            Item ret = deque.get(pos);
+        public T next() {
+            T ret = deque.get(pos);
             pos++;
             return ret;
         }
@@ -73,9 +73,25 @@ public class ArrayDeque<Item> implements Deque<Item>, Iterable<Item> {
 
     /** Return the iterator of arraydeque. */
     @Override
-    public Iterator<Item> iterator() {
+    public Iterator<T> iterator() {
         return new ArrayDequeIterator();
     }
 
+    /** Judge whether THIS is equal to given object o. */
+    public boolean equals(Object o) {
+        if(!(o instanceof Deque)) {
+            return false;
+        }
+        Deque other = (Deque) o;
+        if(other.size() != size()) {
+            return false;
+        }
+        for (int i = 0; i < size(); i++) {
+            if (other.get(i) != get(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

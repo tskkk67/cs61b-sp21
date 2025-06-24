@@ -1,12 +1,12 @@
 package deque;
 
-public class LinkedList<Item> {
+public class LinkedList<T> {
     /** Nested class to form a node. */
     private class Node {
-        Item value;
+        T value;
         Node nxt, lst;
 
-        public Node(Item x, Node n, Node l) {
+        public Node(T x, Node n, Node l) {
             value = x;
             nxt = n;
             lst = l;
@@ -17,7 +17,7 @@ public class LinkedList<Item> {
             if (i == 0) {
                 return this;
             }
-            return this.nxt.get(i-1);
+            return this.nxt.get(i - 1);
         }
     }
 
@@ -34,7 +34,7 @@ public class LinkedList<Item> {
     }
 
     /** Add a node to the front. */
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
         size++;
         Node first = new Node(x, sentinel.nxt, sentinel);
         sentinel.nxt.lst = first;
@@ -42,7 +42,7 @@ public class LinkedList<Item> {
     }
 
     /** Add a node to the bottom. */
-    public void addLast(Item x) {
+    public void addLast(T x) {
         size++;
         Node last = new Node(x, sentinel, sentinel.lst);
         sentinel.lst.nxt = last;
@@ -50,31 +50,31 @@ public class LinkedList<Item> {
     }
 
     /** Remove the first node and return its value. */
-    public Item removeFirst() {
+    public T removeFirst() {
         if (size == 0) {
             return null;
         }
         size--;
-        Item x = sentinel.nxt.value;
+        T x = sentinel.nxt.value;
         sentinel.nxt = sentinel.nxt.nxt;
         sentinel.nxt.lst = sentinel;
         return x;
     }
 
     /** Remove the last node and return its value. */
-    public Item removeLast() {
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
         size--;
-        Item x = sentinel.lst.value;
+        T x = sentinel.lst.value;
         sentinel.lst = sentinel.lst.lst;
         sentinel.lst.nxt = sentinel;
         return x;
     }
 
     /** Get the i-th (0-base) value of the list. */
-    public Item get(int i) {
+    public T get(int i) {
         if (i >= size) {
             return null;
         }
@@ -90,7 +90,7 @@ public class LinkedList<Item> {
      * I may temporarily use iteration first...
      * BREAKING news after 60 mins: your next is a node? Then use recursive mothod on your NODE!
      * What a genius XD */
-    public Item getRecursive(int i) {
+    public T getRecursive(int i) {
         if (i >= size) {
             return null;
         }

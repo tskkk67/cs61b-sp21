@@ -2,8 +2,8 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
-    private LinkedList<Item> deque;
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
+    private LinkedList<T> deque;
 
     public LinkedListDeque() {
         deque = new LinkedList<>();
@@ -11,13 +11,13 @@ public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
 
     /** Add item to the front. */
     @Override
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
         deque.addFirst(x);
     }
 
     /** Add item to the bottom. */
     @Override
-    public void addLast(Item x) {
+    public void addLast(T x) {
         deque.addLast(x);
     }
 
@@ -35,31 +35,31 @@ public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
 
     /** Remove the first item and return its value. */
     @Override
-    public Item removeFirst() {
+    public T removeFirst() {
         return deque.removeFirst();
     }
 
     /** Remove the last item and return its value. */
     @Override
-    public Item removeLast() {
+    public T removeLast() {
         return deque.removeLast();
     }
 
     /** Get the i-th (0-base) item of deque. */
     @Override
-    public Item get(int i) {
+    public T get(int i) {
         return deque.get(i);
     }
 
     /** Get the i-th (0-base) item, but recursively.
      * But I will use iteration... See linkedlist for detail.
      * Big news: no more iteration! Still, see linkedlist for detail. */
-    public Item getRecursive(int i) {
+    public T getRecursive(int i) {
         return deque.getRecursive(i);
     }
 
     /** private class to implement linkedlistdeque iterator. */
-    private class LinkedlistIterator implements Iterator<Item> {
+    private class LinkedlistIterator implements Iterator<T> {
         private int pos;
         public LinkedlistIterator() {
             pos = 0;
@@ -71,8 +71,8 @@ public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
         }
 
         @Override
-        public Item next() {
-            Item ret = deque.get(pos);
+        public T next() {
+            T ret = deque.get(pos);
             pos++;
             return ret;
         }
@@ -80,10 +80,26 @@ public class LinkedListDeque<Item> implements Deque<Item>, Iterable<Item> {
 
     /** Return the iterator of linkedlistdeque. */
     @Override
-    public Iterator<Item> iterator() {
+    public Iterator<T> iterator() {
         return new LinkedlistIterator();
     }
 
+    /** Judge whether THIS is equal to given object o. */
+    public boolean equals(Object o) {
+        if(!(o instanceof Deque)) {
+            return false;
+        }
+        Deque other = (Deque) o;
+        if(other.size() != size()) {
+            return false;
+        }
+        for (int i = 0; i < size(); i++) {
+            if (other.get(i) != get(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 //    public static void main(String[] args){
 //        LinkedListDeque<Integer> test = new LinkedListDeque<>();

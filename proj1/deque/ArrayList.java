@@ -1,27 +1,27 @@
 package deque;
 
-public class ArrayList<Item> {
-    private Item[] items;
+public class ArrayList<T> {
+    private T[] items;
     private int size;
 
     public ArrayList() {
-        items = (Item[]) new Object[8];
+        items = (T[]) new Object[8];
         size = 0;
     }
 
     /** Resize the array with capacity x. */
     private void resize(int x) {
-        Item[] temp = (Item[]) new Object[x];
+        T[] temp = (T[]) new Object[x];
         System.arraycopy(items, 0, temp, 0, size);
         items = temp;
     }
 
     /** Add an item to the front. */
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
         if (size == items.length) {
             resize(items.length * 2);
         }
-        Item[] temp = (Item[]) new Object[items.length];
+        T[] temp = (T[]) new Object[items.length];
         temp[0] = x;
         System.arraycopy(items, 0, temp, 1, size);
         items = temp;
@@ -29,7 +29,7 @@ public class ArrayList<Item> {
     }
 
     /** Add an item to the bottom. */
-    public void addLast(Item x) {
+    public void addLast(T x) {
         if (size == items.length) {
             resize(items.length * 2);
         }
@@ -38,36 +38,36 @@ public class ArrayList<Item> {
     }
 
     /** Remove the first item and return its value. */
-    public Item removeFirst() {
+    public T removeFirst() {
         if (size == 0) {
             return null;
         }
-        Item x = items[0];
-        Item[] temp = (Item[]) new Object[items.length];
+        T x = items[0];
+        T[] temp = (T[]) new Object[items.length];
         System.arraycopy(items, 1, temp, 0, size - 1);
         items = temp;
         size--;
-        if (size < items.length/4 && items.length > 4) {
-            resize(items.length/4);
+        if (size < items.length / 4 && items.length > 4) {
+            resize(items.length / 4);
         }
         return x;
     }
 
     /** Remove the last item and return its value. */
-    public Item removeLast() {
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
-        Item x = items[size-1];
+        T x = items[size - 1];
         size--;
-        if (size < items.length/4 && items.length > 4) {
-            resize(items.length/4);
+        if (size < items.length / 4 && items.length > 4) {
+            resize(items.length / 4);
         }
         return x;
     }
 
     /** Get the i-th (o-base) item. */
-    public Item get(int i) {
+    public T get(int i) {
         if (i >= size) {
             return null;
         }

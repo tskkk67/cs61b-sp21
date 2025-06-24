@@ -2,15 +2,15 @@ package deque;
 
 import java.util.Iterator;
 
-public interface Deque<Item> {
+public interface Deque<T> {
 
-    public void addFirst(Item item);
+    public void addFirst(T item);
 
-    public void addLast(Item item);
+    public void addLast(T item);
 
     /** Judge whether the deque is empty.
      * Return true if empty. */
-    default public boolean isEmpty(){
+    default public boolean isEmpty() {
         if (size() == 0) {
             return true;
         }
@@ -21,11 +21,11 @@ public interface Deque<Item> {
 
     public void printDeque();
 
-    public Item removeFirst();
+    public T removeFirst();
 
-    public Item removeLast();
+    public T removeLast();
 
-    public Item get(int index);
+    public T get(int index);
 
 
 }
