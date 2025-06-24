@@ -79,6 +79,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     /** Judge whether THIS is equal to given object o. */
     public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
         if(!(o instanceof Deque)) {
             return false;
         }
