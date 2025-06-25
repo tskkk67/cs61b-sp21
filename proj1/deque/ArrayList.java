@@ -31,20 +31,6 @@ public class ArrayList<T> {
 
     /** Resize the array with capacity x. */
     private void resize(int x) {
-//        T[] temp = (T[]) new Object[x];
-//        System.arraycopy(items, 0, temp, 0, nlast);
-//        int sourcepos = nlast;
-//        while (items[sourcepos] == null) {
-//            if (sourcepos == items.length - 1) {
-//                break;
-//            }
-//            sourcepos++;
-//        }
-//        System.arraycopy(items, sourcepos, temp, sourcepos + x - items.length, items.length - sourcepos);
-//        if (nfirst > nlast) {
-//            nfirst += x - items.length;
-//        }
-//        items = temp;
         T[] temp = (T[]) new Object[x];
         int p = right(nfirst);
         for (int i = 0; i < size; i++) {

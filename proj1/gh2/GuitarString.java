@@ -1,9 +1,7 @@
 package gh2;
 
-// TODO: uncomment the following import once you're ready to start this portion
 import deque.Deque;
 import deque.LinkedListDeque;
-// TODO: maybe more imports
 
 //Note: This file will not compile until you complete the Deque implementations
 public class GuitarString {
@@ -14,7 +12,6 @@ public class GuitarString {
     private static final double DECAY = .996; // energy decay factor
 
     /* Buffer for storing sound data. */
-    // TODO: uncomment the following line once you're ready to start this portion
     private Deque<Double> buffer;
 
 
