@@ -88,7 +88,7 @@ public class LinkedList<T> {
     /** Get the i-th (0-base) value, but recursively.
      * That's too bad. Can I use recursive method given that my next is a node, not a list?
      * I may temporarily use iteration first...
-     * BREAKING news after 60 mins: your next is a node? Then use recursive mothod on your NODE!
+     * BREAKING news after 60 mins: your next is a node? Then use recursive method on your NODE!
      * What a genius XD */
     public T getRecursive(int i) {
         if (i >= size) {
