@@ -1,5 +1,4 @@
 package deque;
-import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Comparator;
 
@@ -42,13 +41,13 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
     public static class IntCompare implements Comparator<Integer> {
         @Override
         public int compare(Integer a, Integer b) {
-            return a-b;
+            return a - b;
         }
     }
     public static class IntComparesmall implements Comparator<Integer> {
         @Override
         public int compare(Integer a, Integer b) {
-            return b-a;
+            return b - a;
         }
     }
 

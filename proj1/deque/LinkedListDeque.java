@@ -61,7 +61,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     /** private class to implement linkedlistdeque iterator. */
     private class LinkedlistIterator implements Iterator<T> {
         private int pos;
-        public LinkedlistIterator() {
+        LinkedlistIterator() {
             pos = 0;
         }
 
@@ -89,15 +89,15 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         if (this == o) {
             return true;
         }
-        if(!(o instanceof Deque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
         Deque other = (Deque) o;
-        if(other.size() != size()) {
+        if (other.size() != size()) {
             return false;
         }
         for (int i = 0; i < size(); i++) {
-            if (other.get(i) != get(i)) {
+            if (!other.get(i).equals(get(i))) {
                 return false;
             }
         }

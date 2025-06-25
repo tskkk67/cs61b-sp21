@@ -6,7 +6,7 @@ public class LinkedList<T> {
         T value;
         Node nxt, lst;
 
-        public Node(T x, Node n, Node l) {
+        Node(T x, Node n, Node l) {
             value = x;
             nxt = n;
             lst = l;
@@ -105,7 +105,7 @@ public class LinkedList<T> {
     /** Print the items in the list. */
     public void print() {
         Node p = sentinel;
-        for (int i = 0; i< size; i++) {
+        for (int i = 0; i < size; i++) {
             p = p.nxt;
             System.out.print(p.value + " ");
         }
