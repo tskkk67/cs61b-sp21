@@ -7,7 +7,7 @@ import org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 
-public class ArrayDequeTest {
+public class TestArrayDequeEC {
     // YOUR TESTS HERE
 
     public class AListNoResizing<Item> {
