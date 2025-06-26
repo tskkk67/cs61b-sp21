@@ -1,14 +1,12 @@
-package tester;
+package deque;
 
 import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
-import org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 
-import deque.ArrayDeque;
 
-public class TestArrayDequeEC {
+public class ArrayDequeTest {
     // YOUR TESTS HERE
 
     public class AListNoResizing<Item> {
