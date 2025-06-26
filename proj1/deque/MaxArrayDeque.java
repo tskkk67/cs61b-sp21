@@ -11,16 +11,7 @@ public class MaxArrayDeque<T> extends ArrayDeque<T> {
 
     /**  Returns the maximum element by this.c */
     public T max() {
-        if (size() == 0) {
-            return null;
-        }
-        T maxn = get(0);
-        for (int i = 1; i < size(); i++) {
-            if (c.compare(maxn, get(i)) < 0) {
-                maxn = get(i);
-            }
-        }
-        return maxn;
+        return max(c);
     }
 
     /** Returns the maximum element by the given comparator com. */
