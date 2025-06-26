@@ -1,4 +1,4 @@
-package deque;
+package tester;
 
 import edu.princeton.cs.algs4.StdRandom;
 import org.junit.Test;
@@ -6,6 +6,7 @@ import org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 
+import deque.ArrayDeque;
 
 public class TestArrayDequeEC {
     // YOUR TESTS HERE
