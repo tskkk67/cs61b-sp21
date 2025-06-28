@@ -5,13 +5,11 @@ import java.io.Serializable;
 import static capers.Utils.*;
 
 /** Represents a dog that can be serialized.
- * @author TODO
 */
-public class Dog { // TODO
+public class Dog implements Serializable {
 
     /** Folder that dogs live in. */
-    static final File DOG_FOLDER = null; // TODO (hint: look at the `join`
-                                         //      function in Utils)
+    static final File DOG_FOLDER = join(".capers", "dogs"); // TODO (hint: look at the `join` function in Utils)
 
     /** Age of dog. */
     private int age;
@@ -40,6 +38,10 @@ public class Dog { // TODO
      */
     public static Dog fromFile(String name) {
         // TODO (hint: look at the Utils file)
+        File infile = new File(name);
+        if (infile.exists()) {
+            return readObject(infile, Dog.class);
+        }
         return null;
     }
 
@@ -48,7 +50,7 @@ public class Dog { // TODO
      */
     public void haveBirthday() {
         age += 1;
-        System.out.println(toString());
+        System.out.println(this);
         System.out.println("Happy birthday! Woof! Woof!");
     }
 
@@ -57,6 +59,8 @@ public class Dog { // TODO
      */
     public void saveDog() {
         // TODO (hint: don't forget dog names are unique)
+        File outfile = new File(name);
+        writeObject(outfile, this);
     }
 
     @Override
